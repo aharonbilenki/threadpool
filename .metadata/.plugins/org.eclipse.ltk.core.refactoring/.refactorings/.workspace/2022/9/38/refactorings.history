@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Delete resource &apos;Threadpool&apos;" deleteContents="false" description="Delete resource &apos;Threadpool&apos;" element1="/Threadpool" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1663782552735"/>
-</session>
