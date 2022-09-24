@@ -3,7 +3,7 @@ import java.util.LinkedList;
 import java.util.Queue;
  
 public class BlockingQueue<Type>  {
-    private Queue<Type> queue = new LinkedList<Type>();
+    private Queue<Type> threadqu = new LinkedList<Type>();
     private int EMPTY = 0;
     private int MAX_THREADS_QUEUE = -1;
  
@@ -11,25 +11,24 @@ public class BlockingQueue<Type>  {
         this.MAX_THREADS_QUEUE = size;
     }
  
-    public synchronized void enqueue(Type thread)
-            throws InterruptedException  {
-        while(this.queue.size() == this.MAX_THREADS_QUEUE) {
+    public synchronized void adqueue(Type thread)throws InterruptedException  {
+        while(this.threadqu.size() == this.MAX_THREADS_QUEUE) {
             wait();
         }
-        if(this.queue.size() == EMPTY) {
+        if(this.threadqu.size() == EMPTY) {
             notifyAll();
         }
-        this.queue.offer(thread);
+        this.threadqu.offer(thread);
     }
  
     public synchronized Type dequeue()
             throws InterruptedException{
-        while(this.queue.size() == EMPTY){
+        while(this.threadqu.size() == EMPTY){
             wait();
         }
-        if(this.queue.size() == this.MAX_THREADS_QUEUE){
+        if(this.threadqu.size() == this.MAX_THREADS_QUEUE){
             notifyAll();
         }
-        return this.queue.poll();
+        return this.threadqu.poll();
     }
 }
