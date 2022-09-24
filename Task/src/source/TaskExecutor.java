@@ -1,25 +1,26 @@
 package source;
 
 public class TaskExecutor implements Runnable {
-    BlockingQueue<Runnable> taskqu;
-     
-    public TaskExecutor(BlockingQueue<Runnable> queue) {
-        this.taskqu = queue;
-    }
+	BlockingQueue<Runnable> taskqu;
 
-    public void run() {
-        try {
-            while (true) {
-                String name = Thread.currentThread().getName();
-                Runnable task = taskqu.dequeue();
-                System.out.println("Task Started by Thread :" + name);
-                task.run();
-                System.out.println("Task Finished by Thread :" + name);
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
- 
-    }
+	public TaskExecutor(BlockingQueue<Runnable> queue) {
+		this.taskqu = queue;
+	}
+
+	public void run() {
+		try {
+			while (true) {
+				String name = Thread.currentThread().getName();
+				Runnable task = taskqu.dequeue();
+				System.out.println(name+" start runing");
+				task.run();
+				System.out.println(name+" end runing");
+
+			}
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+	}
 
 }
