@@ -15,6 +15,7 @@ public class BlockingQueue<Type> {
 	public synchronized int adqueue(Type task) throws InterruptedException {
 		while (this.taskqu.size() == this.MAX) {
 			wait(500);
+			return 0;
 		}
 		
 		this.taskqu.offer(task);

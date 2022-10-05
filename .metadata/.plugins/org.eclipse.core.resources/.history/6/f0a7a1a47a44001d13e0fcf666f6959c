@@ -12,19 +12,21 @@ public class BlockingQueue<Type> {
 		this.MAX = size;
 	}
 
-	public synchronized void adqueue(Type thread) throws InterruptedException {
+	public synchronized void adqueue(Type task) throws InterruptedException {
 		while (this.taskqu.size() == this.MAX) {
 			wait();
 		}
+		
+		this.taskqu.offer(task);
+
 		if (this.taskqu.size() == EMPTY) {
 			notifyAll();
 		}
-		this.taskqu.offer(thread);
 	}
 
 	public synchronized Type dequeue() throws InterruptedException {
 		while (this.taskqu.size() == EMPTY) {
-			wait();
+			wait(500);
 		}
 		if (this.taskqu.size() == this.MAX) {
 			notifyAll();
