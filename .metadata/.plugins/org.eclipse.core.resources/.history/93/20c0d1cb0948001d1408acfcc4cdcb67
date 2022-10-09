@@ -6,11 +6,11 @@ public class TestThreadPool {
 	public static void main(String[] args) throws InterruptedException {
 		// create queue size - 3
 		// Number of threads - 4
-		ThreadPool threadPool = new ThreadPool(20, 10);
+		ThreadPool threadPool = new ThreadPool(3, 4);
 		// run the test 100 times
 		for (int testnum = 0; testnum != 100; testnum++) {
 			// Created 15 Tasks and submit to pool
-			System.out.println("Test number: "+testnum);
+			System.out.println("test number: "+testnum);
 			for (int taskNumber = 1; taskNumber <= 100; taskNumber++) {
 				TestTask task = new TestTask(taskNumber);
 				threadPool.submitTask(task);
