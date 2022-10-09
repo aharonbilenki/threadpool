@@ -1,4 +1,3 @@
-//TaskExecutor class responsible of execution of tasks.
 package source;
 
 public class TaskExecutor implements Runnable {
@@ -13,13 +12,12 @@ public class TaskExecutor implements Runnable {
 			while (true) {
 				String name = Thread.currentThread().getName();
 				Runnable task = taskqu.dequeue();
-				// run the task only if it's not a null.
-				if (task != null) {
-					System.out.println(name + " start runing");
+				if(task!=null) {
+					System.out.println(name+" start runing");
 					task.run();
-					System.out.println(name + " end runing");
+					System.out.println(name+" end runing");
 				}
-
+				
 			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
