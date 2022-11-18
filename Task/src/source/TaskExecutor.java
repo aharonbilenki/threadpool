@@ -7,10 +7,10 @@ public class TaskExecutor implements Runnable {
 	public TaskExecutor(BlockingQueue<Runnable> queue) {
 		this.taskqu = queue;
 	}
-
-	public void run() {
+//run function implementation
+	 void run() {
 		try {
-			while (true) {
+			while (true) {//infinite loop(the thead)
 				String name = Thread.currentThread().getName();
 				Runnable task = taskqu.dequeue();
 				// run the task only if it's not a null.
